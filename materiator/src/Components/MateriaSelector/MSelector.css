@@ -1,0 +1,17 @@
+.mountButton {
+  width: 20rem;
+  height: 3rem;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  background-color: purple;
+  border-radius: 7px;
+}
+
+.MSelector {
+  padding: 50px;
+}
+
+.materiaForm {
+  margin: 5px;
+}

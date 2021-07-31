@@ -1,0 +1,18 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.question {
+  margin: 10px;
+}
+
+.mountButton {
+  width: 10rem;
+  height: 2.5rem;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  background-color: purple;
+  border-radius: 7px;
+}
