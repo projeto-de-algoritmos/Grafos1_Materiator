@@ -1,11 +1,6 @@
 const materias = {
-  APC: {
-    checked: false,
-    asd: "bla",
-  },
+  APC: false,
   EA: false,
-  IE: false,
-  DIAC: false,
   C1: false,
 };
 

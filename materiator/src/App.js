@@ -1,6 +1,5 @@
 import "./App.css";
 import NavBar from "./Components/NavBar/NavBar";
-import SelectField from "./Components/SelectField/SelectField";
 import MSelector from "./Components/MateriaSelector/MSelector";
 
 function App() {
