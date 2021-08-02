@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import FormGroup from "@material-ui/core/FormGroup";
 import MCheckbox from "../MCheckbox/MCheckbox";
 import "./MSelector.css";

@@ -10,35 +10,37 @@ export default function generateGraph(userSubjects) {
         if (!userSubjects[requisite]) {
           node.addAdjacent(requisite);
         }
-        console.log("requisite", requisite);
       });
 
       userNodes.push(node);
     }
   }
 
-  console.log(userNodes);
-
   let userPriorities = userNodes.map((node) => {
-    let priority = calculatePriority(node);
+    let priority = calculatePriority(userNodes, node);
 
     return {
-      node: node,
+      subject: node.value,
       priority: priority,
     };
   });
 
   console.log(userPriorities);
 
-  return null;
+  return userPriorities;
 }
 
-function calculatePriority(node) {
+function calculatePriority(userNodes, node) {
   let subPriority = 0;
-  for (const requisite in node.adjacents) {
-    //TODO comparar cada value dos adjascents e encontrar o == requisite pra chamar no calculate
 
-    let requisitePriority = calculatePriority(node.adjascents[requisite]);
+  for (const requisite in node.adjacents) {
+    //TODO comparar cada value dos userNodes e encontrar o == requisite pra chamar no calculate
+
+    let requisiteNode = userNodes.find((userNode) => {
+      return userNode.value === node.adjacents[requisite];
+    });
+
+    let requisitePriority = calculatePriority(userNodes, requisiteNode);
     if (requisitePriority > subPriority) {
       subPriority = requisitePriority;
     }
@@ -48,8 +50,10 @@ function calculatePriority(node) {
 
 const subjects = {
   APC: ["C1"],
-  C1: ["EA", "APC"],
+  C1: ["EA"],
   EA: [],
+  DIAC: [],
+  IE: [],
 };
 
 class Node {
