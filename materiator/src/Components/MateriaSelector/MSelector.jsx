@@ -3,17 +3,24 @@ import FormGroup from "@material-ui/core/FormGroup";
 import MCheckbox from "../MCheckbox/MCheckbox";
 import "./MSelector.css";
 import materiasMocks from "../../mocks.js";
+import { useHistory } from 'react-router-dom';
 import generateGraph from "../../graph";
+
+
 
 export default function MSelector() {
   const [state, setState] = React.useState(materiasMocks);
+  // const [graph, setGraph] = React.useState([]);
+  const history = useHistory();
+
 
   const handleChange = (event) => {
     setState({ ...state, [event.target.name]: event.target.checked });
   };
 
-  function generatePriorities() {
-    generateGraph(state);
+  function handleClick() {
+    let graphTeste = generateGraph(state);
+    history.push({ pathname: '/prioridades', state: {graph: graphTeste}})
   }
 
   return (
@@ -29,7 +36,7 @@ export default function MSelector() {
         ))}
       </FormGroup>
 
-      <button className="generateButton" onClick={generatePriorities}>
+      <button className="generateButton" onClick={handleClick}>
         {" "}
         Gerar Prioridades
       </button>

@@ -1,15 +1,9 @@
-import "./App.css";
-import NavBar from "./Components/NavBar/NavBar";
-import MSelector from "./Components/MateriaSelector/MSelector";
+import './App.css';
+import Routes from './Routes/index';
 
 function App() {
   return (
-    <>
-      <NavBar text="Materiator" />
-      <h2 className="question"> Quais matérias c já fez?</h2>
-
-      <MSelector></MSelector>
-    </>
+    <Routes />
   );
 }
 
