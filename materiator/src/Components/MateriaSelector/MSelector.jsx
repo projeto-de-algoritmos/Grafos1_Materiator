@@ -35,7 +35,8 @@ export default function MSelector() {
           ></MCheckbox>
         ))}
       </FormGroup>
-
+      
+      <br />
       <button className="generateButton" onClick={handleClick}>
         {" "}
         Gerar Prioridades

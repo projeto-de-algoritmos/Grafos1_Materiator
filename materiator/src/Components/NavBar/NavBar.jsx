@@ -1,11 +1,12 @@
 import React, { Component } from "react";
+import { Link } from 'react-router-dom';
 import "./NavBar.css";
 
 class NavBar extends Component {
   render() {
     return (
       <div className="navBar">
-        <h1 className="navBarText">{this.props.text}</h1>
+        <Link to="/" className="navBarText" style={{ textDecoration: 'none' }}>{this.props.text}</Link>
       </div>
     );
   }
