@@ -1,11 +1,13 @@
+import { priorities } from "./mocks.js";
+
 export default function generateGraph(userSubjects) {
   let userNodes = [];
 
-  for (const subject in subjects) {
+  for (const subject in priorities) {
     if (!userSubjects[subject]) {
       let node = new Node(subject);
 
-      subjects[subject].forEach((requisite) => {
+      priorities[subject].forEach((requisite) => {
         //if user has not done subject yet, add it to adjacents
         if (!userSubjects[requisite]) {
           node.addAdjacent(requisite);
@@ -20,7 +22,7 @@ export default function generateGraph(userSubjects) {
     let priority = calculatePriority(userNodes, node);
 
     return {
-      subject: node.value,
+      subject: node,
       priority: priority,
     };
   });
@@ -40,62 +42,15 @@ function calculatePriority(userNodes, node) {
       return userNode.value === node.adjacents[requisite];
     });
 
-    let requisitePriority = calculatePriority(userNodes, requisiteNode);
-    if (requisitePriority > subPriority) {
-      subPriority = requisitePriority;
+    if (typeof requisiteNode !== "undefined") {
+      let requisitePriority = calculatePriority(userNodes, requisiteNode);
+      if (requisitePriority > subPriority) {
+        subPriority = requisitePriority;
+      }
     }
   }
   return subPriority + 1;
 }
-
-const subjects = {
-  APC: [],
-  C1: [],
-  EA: [],
-  DIAC: [],
-  IE: [],
-  C2: ["C2"],
-  Física1: [],
-  FisicaExperimental1: [],
-  IAL: [],
-  PE: ["C1"],
-  DS: ["APC"],
-  Métodos: ["C2"],
-  EE: [],
-  Humanidades: [],
-  TED1: ["IAL"],
-  PED1: ["IAL"],
-  OO: ["APC"],
-  MD1: [],
-  GPEQ: ["EE"],
-  MDS: ["OO"],
-  EDA1: ["APC"],
-  FAC: ["TED1"],
-  MD2: ["MD1"],
-  PI1: ["OO"],
-  IHC: ["DIAC", "MDS"],
-  Requisitos: ["MDS"],
-  SBD1: ["MD2"],
-  FSO: ["FAC"],
-  Compiladores1: ["EDA1"],
-  EDA2: ["EDA1"],
-  Qualidade: ["IHC", "GPEQ"],
-  Testes: ["MDS"],
-  Desenho: ["Requisitos"],
-  FRC: ["FSO"],
-  SBD2: ["SBD1"],
-  PA: ["EDA1", "C1"],
-  TecProg: ["Testes", "Desenho"],
-  Paradigmas: ["Compiladores", "OO"],
-  FSE: ["FSO"],
-  PPD: ["FRC", "EDA2"],
-  EPS: ["TecProg"],
-  GCES: ["Testes"],
-  Estágio: [],
-  PI2: [],
-  TCC1: [],
-  TCC2: ["TCC1"],
-};
 
 class Node {
   constructor(value) {

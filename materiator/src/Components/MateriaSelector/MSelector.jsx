@@ -2,25 +2,25 @@ import React from "react";
 import FormGroup from "@material-ui/core/FormGroup";
 import MCheckbox from "../MCheckbox/MCheckbox";
 import "./MSelector.css";
-import materiasMocks from "../../mocks.js";
-import { useHistory } from 'react-router-dom';
+import { subjects } from "../../mocks.js";
+import { useHistory } from "react-router-dom";
 import generateGraph from "../../graph";
 
-
-
 export default function MSelector() {
-  const [state, setState] = React.useState(materiasMocks);
+  const [state, setState] = React.useState(subjects);
   // const [graph, setGraph] = React.useState([]);
   const history = useHistory();
-
 
   const handleChange = (event) => {
     setState({ ...state, [event.target.name]: event.target.checked });
   };
 
   function handleClick() {
-    let graphTeste = generateGraph(state);
-    history.push({ pathname: '/prioridades', state: {graph: graphTeste}})
+    let subjectPriorities = generateGraph(state);
+    history.push({
+      pathname: "/prioridades",
+      state: { subjectPriorities: subjectPriorities },
+    });
   }
 
   return (
@@ -35,7 +35,7 @@ export default function MSelector() {
           ></MCheckbox>
         ))}
       </FormGroup>
-      
+
       <br />
       <button className="generateButton" onClick={handleClick}>
         {" "}

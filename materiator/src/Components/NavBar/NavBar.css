@@ -1,5 +1,5 @@
 .navBar {
-  background-color: purple;
+  background-color: black;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -8,5 +8,5 @@
 }
 
 .navBarText {
-  color: white;
+  color: rgb(250, 175, 76);
 }
