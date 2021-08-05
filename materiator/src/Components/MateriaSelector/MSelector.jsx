@@ -5,10 +5,15 @@ import "./MSelector.css";
 import { subjects } from "../../mocks.js";
 import { useHistory } from "react-router-dom";
 import generateGraph from "../../graph";
+import Modal from "@material-ui/core/Modal";
 
 export default function MSelector() {
   const [state, setState] = React.useState(subjects);
-  // const [graph, setGraph] = React.useState([]);
+  const [modal, setModal] = React.useState({
+    show: false,
+    subject: "",
+    locked: "",
+  });
   const history = useHistory();
 
   const handleChange = (event) => {
@@ -16,11 +21,23 @@ export default function MSelector() {
   };
 
   function handleClick() {
-    let subjectPriorities = generateGraph(state);
-    history.push({
-      pathname: "/prioridades",
-      state: { subjectPriorities: subjectPriorities },
-    });
+    try {
+      let subjectPriorities = generateGraph(state);
+      history.push({
+        pathname: "/prioridades",
+        state: { subjectPriorities: subjectPriorities },
+      });
+    } catch (err) {
+      setModal({
+        show: true,
+        subject: err.subject,
+        locked: err.locked,
+      });
+    }
+  }
+
+  function handleClose() {
+    setModal({ show: false });
   }
 
   return (
@@ -41,6 +58,30 @@ export default function MSelector() {
         {" "}
         Gerar Prioridades
       </button>
+
+      <Modal
+        open={modal.show}
+        onClose={handleClose}
+        aria-labelledby="simple-modal-title"
+        aria-describedby="simple-modal-description"
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <div className="modaldiv">
+          <h1>
+            Escolhas inconsistentes<br></br> {modal.subject} tem como requisito{" "}
+            {modal.locked}
+          </h1>
+
+          <button className="generateButton" onClick={handleClose}>
+            {" "}
+            Voltar
+          </button>
+        </div>
+      </Modal>
     </div>
   );
 }

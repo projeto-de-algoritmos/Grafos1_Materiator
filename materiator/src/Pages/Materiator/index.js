@@ -4,7 +4,7 @@ import MSelector from "../../Components/MateriaSelector/MSelector";
 function Materiator() {
   return (
     <>
-      <h2 className="question"> Quais matérias c já fez?</h2>
+      <h1 className="question"> Quais matérias c já fez?</h1>
 
       <MSelector></MSelector>
     </>

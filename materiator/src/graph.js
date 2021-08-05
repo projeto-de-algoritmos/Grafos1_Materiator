@@ -7,10 +7,12 @@ export default function generateGraph(userSubjects) {
     if (!userSubjects[subject]) {
       let node = new Node(subject);
 
-      priorities[subject].forEach((requisite) => {
+      priorities[subject].forEach((locked) => {
         //if user has not done subject yet, add it to adjacents
-        if (!userSubjects[requisite]) {
-          node.addAdjacent(requisite);
+        if (!userSubjects[locked]) {
+          node.addAdjacent(locked);
+        } else {
+          throw { locked, subject };
         }
       });
 
