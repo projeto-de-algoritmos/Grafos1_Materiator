@@ -21,21 +21,26 @@ function Priorities(history) {
 
       {/* {sortedPriorites.map(() => ())} */}
       <div className="result">
-        {sortedPriorites.map((sortedPriority, idx) => (
-          <div className="prioritygroup">
-            <div className="priorityLabel"> {6 - idx}</div>
+        {sortedPriorites.map((sortedPriority, idx) => {
+          if (sortedPriority.length > 0) {
+            return (
+              <div className="prioritygroup">
+                <div className="priorityLabel"> {6 - idx}</div>
 
-            {sortedPriority.map((priority, idx) => (
-              <div className="subject" key={idx}>
-                <div className="subjectName">{priority.subject.value} </div>
-                <h3>Tranca diretamente:</h3>
-                {priority.subject.adjacents.map((locked, idx) => (
-                  <h4>- {locked}</h4>
+                {sortedPriority.map((priority, idx) => (
+                  <div className="subject" key={idx}>
+                    <div className="subjectName">{priority.subject.value} </div>
+                    <h3>Tranca diretamente:</h3>
+
+                    {priority.subject.adjacents.map((locked, idx) => (
+                      <h4>- {locked}</h4>
+                    ))}
+                  </div>
                 ))}
               </div>
-            ))}
-          </div>
-        ))}
+            );
+          }
+        })}
       </div>
     </>
   );
