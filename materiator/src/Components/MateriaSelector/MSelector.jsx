@@ -72,7 +72,7 @@ export default function MSelector() {
       >
         <div className="modaldiv">
           <h1>
-            Escolhas inconsistentes<br></br> {modal.subject} tem como requisito{" "}
+            Escolhas inconsistentes<br></br> {modal.subject} é requisito de{" "}
             {modal.locked}
           </h1>
 

@@ -38,8 +38,6 @@ function calculatePriority(userNodes, node) {
   let subPriority = 0;
 
   for (const requisite in node.adjacents) {
-    //TODO comparar cada value dos userNodes e encontrar o == requisite pra chamar no calculate
-
     let requisiteNode = userNodes.find((userNode) => {
       return userNode.value === node.adjacents[requisite];
     });
@@ -62,21 +60,5 @@ class Node {
 
   addAdjacent(node) {
     this.adjacents.push(node);
-  }
-
-  removeAdjacent(node) {
-    const index = this.adjacents.indexOf(node);
-    if (index > -1) {
-      this.adjacents.splice(index, 1);
-      return node;
-    }
-  }
-
-  getAdjacents() {
-    return this.adjacents;
-  }
-
-  isAdjacent(node) {
-    return this.adjacents.indexOf(node) > -1;
   }
 }
