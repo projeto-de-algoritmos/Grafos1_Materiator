@@ -12,7 +12,11 @@
 
 ## Sobre
 
-Descreva os objetivos do seu projeto e como ele funciona.
+Esse projeto tem como objetivo mostrar ao usuário, a relação de disciplinas que são mais relevantes de cursar, com base na quantidade de outras disciplinas que ela tranca. 
+Para utilizar o programa, basta selecionar quais disciplinas o usuário já finalizou e clicar no botão "Gerar prioridades". Assim, serão exibidas 1 ou mais colunas, que indicam quais disciplinas seria mais interessante cursar primeiro.
+
+É possível ver isso na screenshot da seção a seguir.
+A primeira coluna possui o número 5. Isso significa que as disciplinas dessa coluna trancam um fluxo com o total de 5 disciplinas. Por exemplo: IAL -> TED1 -> FAC -> FSO -> FRC -> PPD
 
 ## Screenshots
 
@@ -22,12 +26,26 @@ Adicione 3 ou mais screenshots do projeto em funcionamento.
 
 **Linguagem**: JavaScript<br>
 **Framework**: React<br>
-Descreva os pré-requisitos para rodar o seu projeto e os comandos necessários.
 
-## Uso
+Para rodar o projeto localmente, é necessário possuir npm instalado
 
-Explique como usar seu projeto caso haja algum passo a passo após o comando de execução.
+Primeiramente clone o repositório em sua máquina local.
 
-## Outros
+```
+git clone https://github.com/projeto-de-algoritmos/Grafos1_Materiator.git
+```
 
-Quaisquer outras informações sobre seu projeto podem ser descritas abaixo.
+Rode o comando a seguir para instalar as depêndencias
+
+```
+npm install
+```
+
+E para executar o projeto:
+
+```
+npm start
+```
+
+O projeto estará em execução no endereço `localhost:3000`
+
