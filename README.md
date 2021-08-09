@@ -49,3 +49,16 @@ npm start
 
 O projeto estará em execução no endereço `localhost:3000`
 
+## Screenshots
+
+### Página Inicial
+
+![image](https://user-images.githubusercontent.com/38506981/128716631-4d6caecc-1035-4799-bf4f-254396bd170e.png)
+
+### Escolha das disciplinas
+
+![image](https://user-images.githubusercontent.com/38506981/128716688-46d6932b-b121-4012-9da4-a751bb6facdf.png)
+
+### Tela de prioridades
+
+![image](https://user-images.githubusercontent.com/38506981/128716740-a1e25464-e97d-4ce6-ae3a-d2df960e1dfe.png)
